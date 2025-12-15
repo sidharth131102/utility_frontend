@@ -34,7 +34,7 @@ export default function UploadPage() {
 
       // 2. Get signed upload URL
       const urlRes = await fetch(
-        `http://localhost:8080/api/upload-url` +
+        `${API_BASE}/api/upload-url` +
         `?requestId=${requestId}` +
         `&role=${role}` +
         `&remark=${remark.toLowerCase()}` +
@@ -55,7 +55,7 @@ export default function UploadPage() {
 
       // 4. Submit final remark
       const submitRes = await fetch(
-        `http://localhost:8080/api/work-orders/${woId}/submit`,
+        `${API_BASE}/api/work-orders/${woId}/submit`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
