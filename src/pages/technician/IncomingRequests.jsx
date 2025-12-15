@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+const API_BASE = import.meta.env.VITE_API_BASE_URL;
 export default function IncomingRequests() {
   const [requests, setRequests] = useState([]);
   const [search, setSearch] = useState("");
@@ -12,7 +12,7 @@ export default function IncomingRequests() {
   // Fetch Incoming Requests + Work Orders
   // --------------------------------------------
   useEffect(() => {
-    fetch("http://localhost:8080/api/requests/incoming-with-workorders")
+    fetch(`${API_BASE}/api/requests/incoming-with-workorders`)
       .then((res) => res.json())
       .then((data) => {
         setRequests(data.incoming_requests || []);

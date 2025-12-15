@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+const API_BASE = import.meta.env.VITE_API_BASE_URL;
 export default function OrdersPage() {
   const [requests, setRequests] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -8,7 +8,7 @@ export default function OrdersPage() {
   // Fetch ORDERED requests
   // --------------------------------------------
   useEffect(() => {
-    fetch("http://localhost:8080/api/requests/ordered")
+    fetch(`${API_BASE}/api/requests/ordered`)
       .then((res) => res.json())
       .then((data) => {
         setRequests(data.ordered_requests || []);

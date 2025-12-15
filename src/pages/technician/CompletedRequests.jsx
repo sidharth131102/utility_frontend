@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-
+const API_BASE = import.meta.env.VITE_API_BASE_URL;
 export default function CompletedRequests() {
   const [requests, setRequests] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/requests/completed")
+    fetch(`${API_BASE}/api/requests/completed`)
       .then(res => res.json())
       .then(data => {
         setRequests(data.completed_requests || []);

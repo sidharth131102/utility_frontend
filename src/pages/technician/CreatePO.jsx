@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useState } from "react";
-
+const API_BASE = import.meta.env.VITE_API_BASE_URL;
 export default function CreatePO() {
   const { requestId } = useParams();
 
@@ -19,7 +19,7 @@ export default function CreatePO() {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:8080/api/purchase-orders", {
+      const res = await fetch(`${API_BASE}/api/purchase-orders`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

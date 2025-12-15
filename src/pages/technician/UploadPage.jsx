@@ -1,6 +1,6 @@
 import { useParams, useSearchParams } from "react-router-dom";
 import { useState } from "react";
-
+const API_BASE = import.meta.env.VITE_API_BASE_URL;
 export default function UploadPage() {
   const { woId } = useParams();
   const [searchParams] = useSearchParams();
@@ -28,7 +28,7 @@ export default function UploadPage() {
     try {
       // 1. Mark work order IN-PROGRESS
       await fetch(
-        `http://localhost:8080/api/work-orders/${woId}/inspect`,
+        `${API_BASE}/api/work-orders/${woId}/inspect`,
         { method: "POST" }
       );
 

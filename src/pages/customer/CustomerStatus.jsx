@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+const API_BASE = import.meta.env.VITE_API_BASE_URL;
 export default function CustomerStatus() {
   const [requestId, setRequestId] = useState("");
   const [data, setData] = useState(null);
@@ -18,7 +18,7 @@ export default function CustomerStatus() {
 
     try {
       const res = await fetch(
-        `http://localhost:8080/api/customer/request-status?requestId=${requestId}`
+        `${API_BASE}/api/customer/request-status?requestId=${requestId}`
       );
 
       const result = await res.json();
